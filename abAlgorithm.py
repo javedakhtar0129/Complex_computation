@@ -1,4 +1,5 @@
 # using recursion for combination
+
 def combination(n,r):
     if r==0:
         return 1
@@ -68,14 +69,18 @@ def odd_imaginary(real,imaginary,n):
 #     return result
 
 
+
 def algorithm(real,imaginary,n,plots):
 
     if plots == 0:
         return
 
+
+
     print("(", plots, ")")
     print("Real: ", real, "\nImaginary: ", imaginary)
     print()
+
 
     if n%2 == 0:
         R = even_real(real,imaginary,n)
