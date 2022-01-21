@@ -25,7 +25,7 @@ def imagine_click(event):
 label1 = Label(window,text="Plotting Complex Numbers", font=('Oswald 40'),fg="#b30000",height=1)
 label1.place(x=15, y=0)
 
-label2 = Label(window,text="(           )+i(           )", font=('Oswald 40'),fg="#2eb82e",height=1)
+label2 = Label(window,text="(            +  i           )", font=('Oswald 40'),fg="#2eb82e",height=1)
 label2.place(x=15, y=65)
 
 label3 = Label(window,text="n", font=('Oswald 25'),fg="#2eb82e",height=1)

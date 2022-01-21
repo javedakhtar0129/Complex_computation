@@ -20,7 +20,6 @@ def iota(i):
 #
 #     return result
 
-
 def even_real(real,imaginary,n):
     k = 0
     result = 0
@@ -34,7 +33,7 @@ def even_real(real,imaginary,n):
 def even_imaginary(real,imaginary,n):
     k = 1
     result = 0
-    while(k <= n-1 ):
+    while(k <= n ):
         result += combination(n, k) * (real ** k) * (imaginary ** (n - k)) * iota(n - k)
         k += 2
 
@@ -70,12 +69,19 @@ def odd_imaginary(real,imaginary,n):
 
 
 def algorithm(real,imaginary,n,plots):
+
+    if plots == 0:
+        return
+
+    print("(", plots, ")")
+    print("Real: ", real, "\nImaginary: ", imaginary)
+    print()
+
     if n%2 == 0:
         R = even_real(real,imaginary,n)
         I = even_imaginary(real, imaginary, n)
-        print(R,I)
     else:
         R = odd_real(real, imaginary, n)
         I = odd_imaginary(real,imaginary,n)
-        print(R,I)
 
+    algorithm(R,I,n,plots-1)
