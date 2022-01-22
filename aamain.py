@@ -1,5 +1,8 @@
+import imp
 from tkinter import *
 from abAlgorithm import *
+
+import json
 
 window = Tk()
 window.title("Computational Software")
@@ -12,8 +15,28 @@ def submit():
     N = int(power_text.get())
     Plot = int(plot_text.get())
 
-    algorithm(R,I,N,Plot)
+    rf= open("data/data.json", "r")
+    data= json.load(rf)
+    rf.close()
 
+    rf= open("data/trials.txt", "r")
+    trial= int(rf.read())
+    rf.close()
+
+    data[trial]= {}
+
+    data[trial]= algorithm(R,I,N,Plot,data[trial])
+
+    wf= open("data/data.json", "w")
+    json.dump(data, wf, indent=2)
+    wf.close()
+
+    trial += 1
+    wf= open("data/trials.txt", "w")
+    wf.write(str(trial))
+    wf.close()
+
+    print("Wrote plots of trial", trial-1, "in /data/data.json file")
 
 
 def real_click(event):

@@ -70,18 +70,19 @@ def odd_imaginary(real,imaginary,n):
 
 
 
-def algorithm(real,imaginary,n,plots):
+def algorithm(real,imaginary,n,plots,data):
 
     if plots == 0:
         return
 
+    # print("(", plots, ")")
+    # print("Real: ", real, "\nImaginary: ", imaginary)
+    # print()
 
-
-    print("(", plots, ")")
-    print("Real: ", real, "\nImaginary: ", imaginary)
-    print()
-
-
+    data[len(data.keys())+1]= {
+                        "Real" : real,
+                        "Imagionary" : imaginary
+                    }
     if n%2 == 0:
         R = even_real(real,imaginary,n)
         I = even_imaginary(real, imaginary, n)
@@ -89,4 +90,6 @@ def algorithm(real,imaginary,n,plots):
         R = odd_real(real, imaginary, n)
         I = odd_imaginary(real,imaginary,n)
 
-    algorithm(R,I,n,plots-1)
+    algorithm(R,I,n,plots-1,data)
+
+    return data
