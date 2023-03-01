@@ -1,6 +1,7 @@
 from tkinter import *
 from abAlgorithm import *
 
+
 window = Tk()
 window.title("Computational Software")
 # window.configure(background="white")
@@ -11,8 +12,9 @@ def submit():
     I = int(imaginary.get())
     N = int(power_text.get())
     Plot = int(plot_text.get())
-
-    algorithm(R,I,N,Plot)
+    XX = []
+    YY = []
+    algorithm(R,I,N,Plot,XX,YY)
 
 
 
@@ -62,7 +64,7 @@ label5.place(x=200,y=135)
 # spinbox for number of plots
 plot_text = StringVar(window)
 plot_text.set("Iterations")
-plots = Spinbox(window,textvariable=plot_text,from_=1,to=20,bg="#BFEFFF",fg="navy blue")
+plots = Spinbox(window,textvariable=plot_text,from_=1,to=10,bg="#BFEFFF",fg="navy blue")
 plots.place(x=385,y=138,width=50,height=30)
 
 # submit button

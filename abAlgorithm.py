@@ -1,3 +1,5 @@
+import numpy as np
+import pandas as pd
 # using recursion for combination
 
 def combination(n,r):
@@ -12,81 +14,35 @@ def combination(n,r):
 def iota(i):
     return [1, 1, -1, -1][i % 4]
 
-# def till_n(real,imaginary,n):
-#     k = 1
-#     result = 0
-#     while(k <= n):
-#         result += combination(n,k)*(real**k)*(imaginary**(n-k))*iota(n-k)
-#         k+=2
-#
-#     return result
 
-def even_real(real,imaginary,n):
-    k = 0
+def leibniz_expansion(real, imaginary, n, k):
     result = 0
-    while(k <= n ):
-        result += combination(n, k) * (real ** k) * (imaginary ** (n - k)) * iota(n - k)
-        k += 2
+    while(k <= n):
+        result += combination(n,k)*(real**k)*(imaginary**(n-k))*iota(n-k)
+        k+=2
 
     return result
 
+def algorithm(real,imaginary,n,plots,XX,YY):
 
-def even_imaginary(real,imaginary,n):
-    k = 1
-    result = 0
-    while(k <= n ):
-        result += combination(n, k) * (real ** k) * (imaginary ** (n - k)) * iota(n - k)
-        k += 2
-
-    return result
-
-def odd_real(real,imaginary,n):
-    k = 1
-    result = 0
-    while(k <= n ):
-        result += combination(n, k) * (real ** k) * (imaginary ** (n - k)) * iota(n - k)
-        k += 2
-
-    return result
-
-def odd_imaginary(real,imaginary,n):
-    k = 0
-    result = 0
-    while(k <= n-1 ):
-        result += combination(n, k) * (real ** k) * (imaginary ** (n - k)) * iota(n - k)
-        k += 2
-
-    return result
-
-
-# def till_n_minus_one(real,imaginary,n):
-#     k = 0
-#     result = 0
-#     while(k <= n-1):
-#         result += combination(n,k)*(real**k)*(imaginary**(n-k))*iota(n-k)
-#         k+=2
-#
-#     return result
-
-
-
-def algorithm(real,imaginary,n,plots):
+    # XX.append(str(real))
+    # YY.append(str(imaginary))
 
     if plots == 0:
+    #     print("REAL\n",XX)
+    #     print("IMAGINARY\n",YY)
+    #
         return
-
-
 
     print("(", plots, ")")
     print("Real: ", real, "\nImaginary: ", imaginary)
     print()
 
-
     if n%2 == 0:
-        R = even_real(real,imaginary,n)
-        I = even_imaginary(real, imaginary, n)
+        R = leibniz_expansion(real, imaginary, n, 0)
+        I = leibniz_expansion(real, imaginary, n, 1)
     else:
-        R = odd_real(real, imaginary, n)
-        I = odd_imaginary(real,imaginary,n)
+        R = leibniz_expansion(real, imaginary, n, 1)
+        I = leibniz_expansion(real, imaginary, n, 0)
 
-    algorithm(R,I,n,plots-1)
+    algorithm(R,I,n,plots-1,XX,YY)
