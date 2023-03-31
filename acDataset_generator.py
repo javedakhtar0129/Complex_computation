@@ -1,4 +1,4 @@
-from abAlgorithm import algorithm
+from abAlgorithm_improved import algorithm
 from decimal import Decimal
 import numpy as np
 

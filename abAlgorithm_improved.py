@@ -34,12 +34,15 @@ def leibniz_expansion(real, imaginary, n):
 
 
 def algorithm(real, imaginary, n, plots):
+    f = open('complex_raw1.csv',mode='a')
     res = np.zeros((plots, 4), dtype=Decimal)
-    res[0] = [real, imaginary, n, 0]
-    for i in range(1, plots):
+    res[0] = ['xx','xx','xx','xx']
+    # res[0]= [Decimal('0'), Decimal('0'), Decimal('0'), Decimal('0')]
+    res[1] = [real, imaginary, n, 0]
+    for i in range(2, plots):
         real, imaginary = leibniz_expansion(real, imaginary, n)
         res[i] = [real, imaginary, n, i]
-    np.savetxt('datasets.csv', res, delimiter=",", fmt='%s')
+    np.savetxt(f, res, delimiter=",", fmt='%s')
+    f.close()
 
-
-algorithm(Decimal(1.0), Decimal(1.0), 2, 8)
+# algorithm(Decimal(1.1), Decimal(1.0), 2, 8)
