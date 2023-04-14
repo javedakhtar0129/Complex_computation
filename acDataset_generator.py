@@ -1,3 +1,5 @@
+import time
+
 from abAlgorithm_improved import algorithm
 from decimal import Decimal
 import numpy as np
@@ -30,8 +32,14 @@ precision_round = int(len(str(precision)[2:]))
 real_values = np.around(np.arange(lower_limit, upper_limit + precision, precision), precision_round)
 imaginary_values = np.around(np.arange(lower_limit, upper_limit + precision, precision), precision_round)
 
+print(np.where(real_values==5))
+print(real_values[1500])
+
+
 for i in range(real_values.shape[0]):
-    for j in range(imaginary_values.shape[0]):
-        for k in k_values:
-            print(real_values[i], imaginary_values[j], k, 8)
-            algorithm(Decimal(real_values[i]),Decimal(imaginary_values[j]),k,8)
+    if i > 1000 and i<=1500:
+        for j in range(imaginary_values.shape[0]):
+            for k in k_values:
+                # time.sleep(10)
+                print(real_values[i], imaginary_values[j], k, 8)
+                algorithm(Decimal(real_values[i]),Decimal(imaginary_values[j]),k,8)
