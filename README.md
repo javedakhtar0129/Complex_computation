@@ -3,7 +3,7 @@ This project involves classifying complex numbers based on their spiraling direc
 (clockwise or counterclockwise) when iteratively squared, cubed, etc.
 </br>
 
-`### How to setup project:-
+### How to setup project:-
 1. To get started with the project, first clone the repository
 2. Next, install the necessary packages by running 'pip install -r requirements.txt'
 3. Set the desired lower and upper limits for the dataset in 'acDataset_generator.py',
